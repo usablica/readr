@@ -3,9 +3,7 @@ import { StyleSheet, Platform, Text } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import colors from 'HSColors'
 import fonts from 'HSFonts'
-
 import Home from './home/index'
-
 import { Tabs, Tab } from 'react-native-elements'
 
 let styles = {}
@@ -90,4 +88,4 @@ styles = StyleSheet.create({
   }
 })
 
-export default App
+export default App;

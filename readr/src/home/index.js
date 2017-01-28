@@ -32,7 +32,7 @@ class Home extends Component {
   }
 
   fetchData() {
-    fetch('https://sandbox.aylien.com/newsapi/stories?published_at.start=NOW-30DAYS&published_at.end=NOW')
+    fetch('https://sandbox.aylien.com/newsapi/stories?published_at.start=NOW-90DAYS&published_at.end=NOW')
       .then((response) => response.json())
       .then((resp) => {
         console.log('done')
@@ -57,6 +57,10 @@ class Home extends Component {
     );
   }
 
+  search() {
+    fetch
+  }
+
   render () {
     if (!this.state.loaded) {
       return this.renderLoadingView();
@@ -70,7 +74,8 @@ class Home extends Component {
       <View style={styles.container}>
         <SearchBar
           round
-          placeholder='Type Here...' />
+          onChangeText={search}
+          placeholder='Search here...' />
 
         <ScrollView style={{backgroundColor: 'white'}}>
 

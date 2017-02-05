@@ -15,6 +15,9 @@ import {
   Row
 } from 'react-native-elements'
 
+import NewsAPIQuery from '../lib/newsapi/query'
+import NewsAPI from '../lib/newsapi/newsapi'
+
 let styles = {}
 
 class Home extends Component {
@@ -32,8 +35,10 @@ class Home extends Component {
   }
 
   fetchData() {
-    fetch('https://sandbox.aylien.com/newsapi/stories?published_at.start=NOW-90DAYS&published_at.end=NOW')
-      .then((response) => response.json())
+    let apiQuery = new NewsAPIQuery();
+    let newsAPI = new NewsAPI(apiQuery);
+
+    newsAPI.stories()
       .then((resp) => {
         console.log('done')
         console.log(resp)
@@ -58,7 +63,7 @@ class Home extends Component {
   }
 
   search() {
-    fetch
+    console.log('search')
   }
 
   render () {
@@ -74,7 +79,7 @@ class Home extends Component {
       <View style={styles.container}>
         <SearchBar
           round
-          onChangeText={search}
+          onChangeText={() => this.search}
           placeholder='Search here...' />
 
         <ScrollView style={{backgroundColor: 'white'}}>

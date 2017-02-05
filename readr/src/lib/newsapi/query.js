@@ -1,7 +1,8 @@
-class NewsAPIQuery {
+export default class NewsAPIQuery {
   constructor() {
-    this._url = "https://sandbox.aylien.com";
+    this._url = "https://sandbox.aylien.com/newsapi";
     this._query = {};
+    this.defaultQuery();
   }
 
   get query() {
@@ -12,11 +13,13 @@ class NewsAPIQuery {
     return this._url;
   }
 
-  /**
-   * HTTP GET
-   */
-  get() {
-    return this.url + '?' + this.serialize();
+  defaultQuery() {
+    this.published_at_start();
+    this.published_at_end();
+  }
+
+  stories() {
+    return this.url + '/stories?' + this.serialize();
   }
 
   append(key, value) {
@@ -30,8 +33,9 @@ class NewsAPIQuery {
   serialize() {
     let str = [];
 
-    for (const p of this.query) {
-      str.push(encodeURIComponent(p) + "=" + encodeURIComponent(p));
+    for (const i in this._query) {
+      let p = this._query[i];
+      str.push(encodeURIComponent(i) + "=" + encodeURIComponent(p));
     }
 
     return str.join("&");

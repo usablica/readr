@@ -18,8 +18,12 @@ export default class NewsAPIQuery {
     this.published_at_end();
   }
 
-  stories() {
-    return this.url + '/stories?' + this.serialize();
+  setQuery(query) {
+    this._query = query;
+  }
+
+  mergeQuery(query) {
+    Object.assign(this._query, query);
   }
 
   append(key, value) {
@@ -47,5 +51,10 @@ export default class NewsAPIQuery {
 
   published_at_end(param = "NOW") {
     return this.append('published_at.end', param);
+  }
+
+  cursor(cursor) {
+    if (cursor)
+      return this.append('cursor', cursor);
   }
 }

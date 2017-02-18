@@ -880,7 +880,6 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/readr.app/readr";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -897,7 +896,6 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/readr.app/readr";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Release;
